@@ -310,28 +310,14 @@ Product.Config.prototype.showFullImageDiv = function(productId, parentId) {
 
     //TODO: This is needed to reinitialise Product.Zoom correctly,
     //but there's still a race condition (in the onComplete below) which can break it
-    try {product_zoom.draggable.destroy();} catch(x) {}
 
     if(productId) {
         new Ajax.Updater(destElement, imgUrl, {
             method: 'get',
-            evalScripts: false,
-            onComplete: function() {
-                //Product.Zoom needs the *image* (not just the html source from the ajax)
-                //to have loaded before it works, hence image object and onload handler
-                if ($('image')){
-                    var imgObj = new Image();
-                    imgObj.onload = function() {product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint'); };
-                    imgObj.src = $('image').src;
-                } else {
-                    destElement.innerHTML = defaultZoomer;
-                    product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint')
-                }
-          }
+            evalScripts: false
         });
     } else {
         destElement.innerHTML = defaultZoomer;
-        product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
     }
 };
 

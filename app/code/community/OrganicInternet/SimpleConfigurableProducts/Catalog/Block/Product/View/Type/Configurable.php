@@ -86,7 +86,7 @@ class OrganicInternet_SimpleConfigurableProducts_Catalog_Block_Product_View_Type
         if (Mage::getStoreConfig('SCP_options/product_page/change_image')) {
             if (Mage::getStoreConfig('SCP_options/product_page/change_image_fancy')) {
                 $childBlock = $this->getLayout()->createBlock('catalog/product_view_media');
-                $config["imageZoomer"] = $childBlock->setTemplate('catalog/product/view/media.phtml')
+                $config["imageZoomer"] = $childBlock->setTemplate('easylightbox/media.phtml')
                     ->setProduct($this->getProduct())
                     ->toHtml();
             }

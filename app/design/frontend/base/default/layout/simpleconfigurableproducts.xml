@@ -18,6 +18,19 @@
         </reference>
     </catalog_product_view>
 
+    <catalog_category_default>
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/scp_product_extension.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/scp_product_list_extension.js</name></action>
+        </reference>
+
+        <reference name="product_list">    
+            <action method="setTemplate"><template>catalog/product/scplist.phtml</template></action>
+        </reference>
+
+    </catalog_category_default>
+
     <customer_account>
         <reference name="sale.reorder.sidebar">
             <action method="setTemplate"><template>sales/reorder/scpsidebar.phtml</template></action>
